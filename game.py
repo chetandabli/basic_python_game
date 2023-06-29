@@ -13,6 +13,7 @@ def winner():
     global computer_wins
     global draws
 
+    # Get user's choice and generate computer's choice
     user_input = entry.get().lower()
     computer_input = random.choice(choices)
 
@@ -31,36 +32,26 @@ def winner():
         dispay.configure(text="Computer Win!")
     ttk.Label(frm, text="Score - User:{} Computer: {} Draws: {}".format(user_wins, computer_wins, draws)).grid(column=0, row=1)
 
-# while True:
-#     print("Rock, Paper, Scissors Game")
-#     print("Enter your choice (rock, paper, scissors) or 'q' to quit:")
 
-#     user_input = input().lower()
-
-#     if user_input == "q":
-#         break
-
-#     if user_input not in choices:
-#         print("Please give correct choice like rock, paper, scissors or q (to quit the game)")
-#         continue
-
-#     computer_input = random.choice(choices)
-
-#     result = winner(user_input, computer_input)
-
-#     print(result)
-#     print("Score - User:", user_wins, "Computer:", computer_wins, "Draws:", draws)
-
-
+# it's a GUI module
 root = Tk()
 frm = ttk.Frame(root, padding=10)
 frm.grid()
+
+# Game title
 ttk.Label(frm, text="Rock, Paper, Scissors Game").grid(column=0, row=0)
 dispay = ttk.Label(frm, text=" ")
 dispay.grid(column=1, row=0)
 ttk.Label(frm, text="Score - User:{} Computer: {} Draws: {}".format(user_wins, computer_wins, draws)).grid(column=0, row=1)
+
+# Quit button
 ttk.Button(frm, text="Quit", command=root.destroy).grid(column=2, row=0)
+
+# User input entry field
 entry = ttk.Entry(frm)
 entry.grid(column=0, row=2)
+
+# Submit button
 ttk.Button(frm, text="Submit", command=winner).grid(column=1, row=2)
+
 root.mainloop()
